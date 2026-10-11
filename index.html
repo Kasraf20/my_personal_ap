@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ek Chhota Sa Sawaal ❤️</title>
+
+    <style>
+        :root {
+            --pink: #ff5b91;
+            --deep-pink: #a81755;
+            --text: #5a2440;
+            --bg: #fff0f6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        #app {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 22px;
+            background:
+                radial-gradient(circle at 15% 15%, #ffb8d4aa, transparent 30%),
+                radial-gradient(circle at 85% 80%, #ffc4a866, transparent 28%),
+                var(--bg);
+            overflow: hidden;
+        }
+
+        .card {
+            position: relative;
+            width: min(100%, 520px);
+            padding: 40px 24px;
+            text-align: center;
+            border: 1px solid #ffd0e1;
+            border-radius: 30px;
+            background: #ffffffed;
+            box-shadow: 0 22px 70px #a8175520;
+        }
+
+        .heart {
+            font-size: 54px;
+            display: block;
+            animation: beat 1.2s infinite;
+        }
+
+        .eyebrow {
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 11px;
+            color: #b47c98;
+            font-weight: 800;
+            margin: 12px 0 18px;
+        }
+
+        h1 {
+            font-size: clamp(27px, 6vw, 39px);
+            line-height: 1.2;
+            margin: 0 0 15px;
+            color: var(--deep-pink);
+        }
+
+        p {
+            line-height: 1.8;
+            margin: 0 auto 22px;
+            max-width: 390px;
+        }
+
+        .buttons {
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            position: relative;
+            margin: 20px auto 0;
+            max-width: 360px;
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 999px;
+            padding: 14px 24px;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 0.18s, box-shadow 0.18s;
+            touch-action: manipulation;
+        }
+
+        .yes {
+            background: linear-gradient(135deg, #ff77a5, #f43f7f);
+            color: white;
+            box-shadow: 0 9px 22px #f43f7f40;
+        }
+
+        .yes:hover {
+            transform: translateY(-2px) scale(1.04);
+        }
+
+        .no {
+            background: #f6edf1;
+            color: var(--text);
+            border: 1px solid #ead5df;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hint {
+            font-size: 12px;
+            color: #b47c98;
+            margin-top: 18px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .letter {
+            margin-top: 24px;
+            padding: 22px 18px;
+            border-radius: 20px;
+            background: #fff0f6;
+            border: 1px dashed #f59abd;
+            animation: pop 0.35s ease-out;
+        }
+
+        .letter h2 {
+            color: var(--deep-pink);
+            margin: 0 0 12px;
+            font-size: 26px;
+        }
+
+        .letter p {
+            margin-bottom: 14px;
+        }
+
+        .signature {
+            font-weight: 800;
+            color: var(--deep-pink);
+        }
+
+        .sparkle {
+            font-size: 23px;
+            letter-spacing: 8px;
+            margin: 12px 0;
+        }
+
+        .floating-heart {
+            position: fixed;
+            bottom: -30px;
+            pointer-events: none;
+            animation: floatUp 4s linear forwards;
+            z-index: 10;
+        }
+
+        @keyframes beat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        @keyframes pop {
+            from {
+                opacity: 0;
+                transform: translateY(10px) scale(.97);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes floatUp {
+            to {
+                transform: translateY(-110vh) rotate(25deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .card {
+                padding: 30px 16px;
+            }
+
+            .btn {
+                padding: 13px 18px;
+                font-size: 14px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .heart {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main id="app">
+        <section class="card" aria-live="polite">
+
+            <span class="heart" id="mainHeart">💗</span>
+
+            <div class="eyebrow">Sirf Tumhare Liye</div>
+
+            <div id="question">
+                <h1>Kya tum mujhse pyaar karti ho? 🥺</h1>
+
+                <p>
+                    Narazgi apni jagah, par tum meri favourite person ho.
+                    Ek baar dil se jawab dena… ❤️
+                </p>
+
+                <div class="buttons" id="buttonArea">
+                    <button class="btn yes" id="yesBtn">
+                        Haan, karti hoon 💖
+                    </button>
+
+                    <button class="btn no" id="noBtn">
+                        Nahi 🙈
+                    </button>
+                </div>
+
+                <div class="hint" id="hint">
+                    Psst… “Nahi” button thoda shararti hai 😜
+                </div>
+            </div>
+
+            <div class="letter hidden" id="letter">
+                <div class="sparkle">✨ 💕 ✨</div>
+
+                <h2>Yayyy! ❤️🥹</h2>
+
+                <p>
+                    Tumhari smile mere liye bahut special hai.
+                    Agar meri kisi baat se tum naraz ho, toh dil se sorry.
+                    Main chahta hoon ki hum baat karke sab theek kar lein.
+                    Tumhari khushi aur tumhari feelings mere liye important hain. 🫶
+                </p>
+
+                <p>
+                    Ab ek chhoti si request hai…
+                    <strong>Ek Dairy Milk hi khila do 🍫</strong>
+                    aur please mujhe call bhi kar lo 📞.
+                    Tumhari awaaz sunkar achha lagega. ❤️
+                </p>
+
+                <p class="signature">
+                    Tumhara Jaanu(Asraf), jo tumhe bahut pyaar karta hai 💌
+                </p>
+
+                <button class="btn yes" id="againBtn">
+                    Ek hug aur? 🤗
+                </button>
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+        const noBtn = document.getElementById("noBtn");
+        const yesBtn = document.getElementById("yesBtn");
+        const question = document.getElementById("question");
+        const letter = document.getElementById("letter");
+        const hint = document.getElementById("hint");
+        const buttonArea = document.getElementById("buttonArea");
+        const mainHeart = document.getElementById("mainHeart");
+
+        // No button ko idhar-udhar bhagane ka function
+        function dodgeButton() {
+            const area = buttonArea.getBoundingClientRect();
+            const btn = noBtn.getBoundingClientRect();
+
+            // Button ko visible area ke andar rakho
+            const maxX = Math.max(0, area.width - btn.width);
+            const maxY = 90;
+
+            noBtn.style.position = "absolute";
+            noBtn.style.left = Math.random() * maxX + "px";
+            noBtn.style.top = Math.random() * maxY - 20 + "px";
+
+            const messages = [
+                "Arre, Haan try karo na 😄",
+                "Itni aasani se nahi pakad paogi! 🙈",
+                "Ek baar pyaar se socho ❤️",
+                "Nahi button toh bhaag raha hai 😂",
+                "Maan bhi jao na please 🥺"
+            ];
+
+            hint.textContent =
+                messages[Math.floor(Math.random() * messages.length)];
+        }
+
+        // Desktop par mouse paas aate hi button bhaagega
+        noBtn.addEventListener("pointerenter", dodgeButton);
+
+        // Mobile par touch karne par button bhaagega
+        noBtn.addEventListener("touchstart", function (event) {
+            event.preventDefault();
+            dodgeButton();
+        }, { passive: false });
+
+        // Click karne par bhi No select nahi hoga
+        noBtn.addEventListener("click", function (event) {
+            event.preventDefault();
+            dodgeButton();
+        });
+
+        // Yes button par click karne se love message khulega
+        yesBtn.addEventListener("click", function () {
+            question.classList.add("hidden");
+            letter.classList.remove("hidden");
+
+            mainHeart.textContent = "🥰";
+
+            // Chhote floating hearts
+            for (let i = 0; i < 18; i++) {
+                setTimeout(createHeart, i * 100);
+            }
+        });
+
+        // Floating heart animation
+        function createHeart() {
+            const heart = document.createElement("div");
+
+            heart.className = "floating-heart";
+            heart.textContent = ["💗", "💕", "❤️", "💖"][
+                Math.floor(Math.random() * 4)
+            ];
+
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (18 + Math.random() * 22) + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(function () {
+                heart.remove();
+            }, 4000);
+        }
+
+        // Hug button
+        document.getElementById("againBtn").addEventListener("click", function () {
+            mainHeart.textContent = "🤗";
+
+            letter.querySelector("h2").textContent =
+                "Virtual hug tumhare liye! 🤗💗";
+
+            letter.querySelector(".signature").textContent =
+                "Ab ek call bhi ho jaaye? 📞❤️";
+
+            for (let i = 0; i < 12; i++) {
+                setTimeout(createHeart, i * 120);
+            }
+        });
+    </script>
+</body>
+</html>
